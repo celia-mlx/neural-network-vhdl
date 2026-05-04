@@ -9,12 +9,12 @@ ENTITY network IS
     );
     PORT (
         input  : IN  tab_int_const;
-        output : OUT tab_layer(1 TO 2)
+        output : OUT tab_int(1 TO 2)
     );
 END ENTITY;
 
 ARCHITECTURE behavioral OF network IS
-    TYPE layer_outputs IS ARRAY(0 TO Nb_Layers) OF tab_layer(1 TO N);
+    TYPE layer_outputs IS ARRAY(0 TO Nb_Layers) OF tab_int(1 TO N);
     
     FUNCTION nb_neurons(layer : integer) RETURN integer IS
     BEGIN
@@ -31,7 +31,7 @@ BEGIN
         VARIABLE layer_out : layer_outputs := (OTHERS => (OTHERS => 0));
         VARIABLE weighted_sum : integer := 0;
     BEGIN
-        -- Connecter les entrées à la couche 0
+        -- Connecter les entrÃ©es Ã  la couche 0
         FOR i IN 1 TO N LOOP
             layer_out(0)(i) := input(i);
         END LOOP;
